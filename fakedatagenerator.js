@@ -9,7 +9,7 @@ function getRandomInt(min, max) {
 }
 
 function isCreator(percentLikely) {
-  if (getRandomInt(1, 101) < percentLikely) {
+  if (getRandomInt(1, 101) < percentLikely) { // replace with i % 5
     return true;
   }
   return false;
@@ -50,6 +50,7 @@ function generateReplies() {
   const replies = [];
   for (let i = 0; i < getRandomInt(0, 4); i += 1) {
     replies.push({
+      id: i,
       author: faker.name.findName(),
       authorIsCreator: isCreator(50),
       profilePicture: getRandomProfilePic(),
@@ -66,8 +67,9 @@ for (let i = 1; i <= 100; i += 1) {
   const fakeCommentData = [];
   for (let j = 0; j < getRandomInt(1, 26); j += 1) {
     fakeCommentData.push({
+      id: j,
       author: faker.name.findName(),
-      authorIsCreator: isCreator(1),
+      authorIsCreator: isCreator(1), // replace with i
       profilePicture: getRandomProfilePic(),
       createdAt: faker.date.recent(),
       body: randomBodyLength(),

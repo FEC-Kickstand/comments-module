@@ -14,10 +14,11 @@ class App extends React.Component {
 
   componentDidMount() {
     const splitURL = window.location.href.split('/');
-    const projectId = typeof splitURL[splitURL.length - 1] === 'number' ? splitURL[splitURL.length - 1] : 44;
-    $.get(`http://commentsmodule-env.28xqpexbcv.us-east-2.elasticbeanstalk.com/projects/${projectId}/comments`, (data) => {
+    console.log(splitURL);
+    const projectId = typeof parseInt(splitURL[splitURL.length - 1]) === 'number' ? splitURL[splitURL.length - 1] : 44;
+    $.get(`/foobar/${projectId}/comments`, (data) => {
       this.setState({
-        commentList: JSON.parse(data)[0].comments,
+        commentList: JSON.parse(data).comments,
       });
     });
   }
